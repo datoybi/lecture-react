@@ -1,6 +1,6 @@
 import Button from "./Button";
 
-const ProductItem = ({ product, onClick }) => {
+const ProductItem = ({ onClick, product }) => {
   const { name, price, thumbnail } = product;
 
   return (

@@ -4,7 +4,6 @@ const Title = ({ backUrl, children }) => {
   if (backUrl) {
     return (
       <>
-        {/* <a href={backUrl} /> */}
         <MyRouter.Link to={backUrl} />
         <h1 style={{ paddingRight: "44px" }}>{children}</h1>
       </>

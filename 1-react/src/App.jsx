@@ -3,18 +3,19 @@ import createEventEmitter from "shared/lib/EventEmitter";
 import CartPage from "./pages/CartPage";
 import ProductPage from "./pages/ProductPage";
 import OrderPage from "./pages/OrderPage";
+import * as MyRouter from "./lib/MyRouter";
 
-const App = () => {
-  const { pathname } = window.location;
-
-  return (
-    <>
-      {pathname === "/order" && <OrderPage />}
-      {pathname === "/cart" && <CartPage />}
-      {!["/order", "/cart"].includes(pathname) && <ProductPage />}
-    </>
-  );
-};
+const App = () => (
+  <MyRouter.routerContext.Consumer>
+    {({ path }) => (
+      <MyRouter.Router>
+        {path === "/order" && <OrderPage />}
+        {path === "/cart" && <CartPage />}
+        {!["/order", "/cart"].includes(path) && <ProductPage />}
+      </MyRouter.Router>
+    )}
+  </MyRouter.routerContext.Consumer>
+);
 
 export default App;
 

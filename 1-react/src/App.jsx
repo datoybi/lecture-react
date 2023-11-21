@@ -1,19 +1,51 @@
-import * as MyRouter from "./lib/MyRouter";
-import * as MyLayout from "./lib/MyLayout";
 import CartPage from "./pages/CartPage";
-import OrderPage from "./pages/OrderPage";
 import ProductPage from "./pages/ProductPage";
 
 const App = () => (
-  <MyLayout.Layout>
-    <MyRouter.Router>
-      <MyRouter.Routes>
-        <MyRouter.Route path="/cart" element={<CartPage />} />
-        <MyRouter.Route path="/order" element={<OrderPage />} />
-        <MyRouter.Route path="/" element={<ProductPage />} />
-      </MyRouter.Routes>
-    </MyRouter.Router>
-  </MyLayout.Layout>
+  <>
+    {/* <ProductPage /> */}
+    <CartPage />
+  </>
 );
 
 export default App;
+
+// import React from "react";
+
+// class Foo extends React.Component {
+//   render() {
+//     return <>Foo</>;
+//   }
+// }
+
+// class MyComponent extends React.Component {
+//   // 컴포넌트를 ref로 넣으면 컴포넌트의 인스턴스를 가리킨다.
+//   divRef = React.createRef();
+//   fooRef = React.createRef();
+
+//   constructor(props) {
+//     super(props);
+//     console.log("constructor", this.divRef);
+//   }
+
+//   render() {
+//     console.log("render", this.divRef);
+//     return (
+//       <>
+//         <div ref={this.divRef}>div</div>
+//         <Foo ref={this.fooRef} />
+//       </>
+//     );
+//   }
+
+//   componentDidMount() {
+//     console.log("componentDidMount", this.divRef);
+//     console.log("componentDidMount", this.fooRef);
+//     this.divElement = this.divRef.current;
+//     this.divElement.style.backgroundColor = "red";
+//     this.divElement.style.height = "100px";
+//     this.divElement.style.width = "100px";
+//   }
+// }
+
+// export default MyComponent;

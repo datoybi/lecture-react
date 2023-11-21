@@ -18,33 +18,29 @@ class OrderForm extends React.Component {
     return inputElement.value;
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
-
     const deliveryAddress = this.getInputValueByName("deliveryAddress");
     const deliveryContact = this.getInputValueByName("deliveryContact");
     const paymentMethod = this.getInputValueByName("paymentMethod");
     const messageToShop = this.getInputValueByName("messageToShop");
     const messageToRider = this.getInputValueByName("messageToRider");
 
+    // console.log("submit", { deliveryAddress, deliveryContact, paymentMethod, messageToShop, messageToRider });
+
     this.props.onSubmit({
       deliveryAddress,
       deliveryContact,
       paymentMethod,
-      messageToRider,
       messageToShop,
+      messageToRider,
     });
-  }
+  };
 
   render() {
     return (
-      <form
-        className="OrderForm"
-        id="order-form"
-        ref={this.formRef}
-        onSubmit={this.handleSubmit}
-      >
-        <FormControl label="주소" htmlFor="deliveryAddress" required>
+      <form className="OrderForm" id="order-form" ref={this.formRef} onSubmit={this.handleSubmit}>
+        <FormControl label="주소" htmlFor={"deliveryAddress"} required>
           <input
             type="text"
             name="deliveryAddress"
@@ -54,27 +50,27 @@ class OrderForm extends React.Component {
             autoFocus
           />
         </FormControl>
-        <FormControl label="연락처" htmlFor="deliveryContact" required>
+        <FormControl label="연락처" htmlFor={"deliveryContact"} required>
           <input
             type="text"
             name="deliveryContact"
             id="deliveryContact"
             placeholder="연락처를 입력하세요"
-            pattern="^\d{2,3}-\d{3,4}-\d{4}$"
             required
+            pattern="^\d{2,3}-\d{3,4}-\d{4}$"
           />
         </FormControl>
-        <FormControl label="결재수단" htmlFor="paymentMethod" required>
+        <FormControl label="결제수단" htmlFor={"paymentMethod"} required>
           <select name="paymentMethod" id="paymentMethod">
             <option value="마이페이">마이페이</option>
             <option value="만나서 결제">만나서 결제</option>
           </select>
         </FormControl>
-        <FormControl label="가게 사장님께" htmlFor="messageToShop">
-          <textarea name="messageToShop" id="messageToShop"></textarea>
+        <FormControl label="가게 사장님께" htmlFor={"messageToShop"}>
+          <textarea name="messageToShop" id="messageToShop" />
         </FormControl>
-        <FormControl label="라이더님께" htmlFor="messageToRider">
-          <textarea name="messageToRider" id="messageToRider"></textarea>
+        <FormControl label="라이더님께" htmlFor={"messageToRider"}>
+          <textarea name="messageToRider" id="messageToRider" />
         </FormControl>
       </form>
     );

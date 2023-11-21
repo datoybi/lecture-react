@@ -1,5 +1,5 @@
 import React from "react";
-import { createEventEmitter } from "shared/lib/EventEmitter";
+import createEventEmitter from "shared/lib/EventEmitter";
 
 const MyReact = (function () {
   function createContext(initialValue) {
@@ -22,9 +22,7 @@ const MyReact = (function () {
     class Consumer extends React.Component {
       constructor(props) {
         super(props);
-        this.state = {
-          value: emitter.get(),
-        };
+        this.state = { value: emitter.get() };
         this.setValue = this.setValue.bind(this);
       }
 

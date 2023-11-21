@@ -3,7 +3,7 @@ const Button = ({ styleType, block, ...rest }) => {
   if (styleType) className += ` ${styleType}`;
   if (block) className += " block";
 
-  return <button {...rest} className={className} />;
+  return <button className={className} {...rest} />;
 };
 
 export default Button;

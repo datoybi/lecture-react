@@ -1,20 +1,18 @@
 import React from "react";
 import createEventEmitter from "shared/lib/EventEmitter";
-import CartPage from "./pages/CartPage";
-import ProductPage from "./pages/ProductPage";
-import OrderPage from "./pages/OrderPage";
 import * as MyRouter from "./lib/MyRouter";
+import CartPage from "./pages/CartPage";
+import OrderPage from "./pages/OrderPage";
+import ProductPage from "./pages/ProductPage";
 
 const App = () => (
-  <MyRouter.routerContext.Consumer>
-    {({ path }) => (
-      <MyRouter.Router>
-        {path === "/order" && <OrderPage />}
-        {path === "/cart" && <CartPage />}
-        {!["/order", "/cart"].includes(path) && <ProductPage />}
-      </MyRouter.Router>
-    )}
-  </MyRouter.routerContext.Consumer>
+  <MyRouter.Router>
+    <MyRouter.Routes>
+      <MyRouter.Route path="/cart" element={<CartPage />} />
+      <MyRouter.Route path="/order" element={<OrderPage />} />
+      <MyRouter.Route path="/" element={<ProductPage />} />
+    </MyRouter.Routes>
+  </MyRouter.Router>
 );
 
 export default App;
